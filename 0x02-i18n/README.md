@@ -1,37 +1,72 @@
-# Project: 0x02. i18n
+# Flask Babel Internationalization (i18n) Project
 
-## Resources
+Welcome to the Flask Babel Internationalization (i18n) Project! This is a standalone project that will guide you through the process of setting up a basic Flask app with internationalization support using Babel. In this project, we will create a simple web application that can display content in multiple languages.
 
-#### Read or watch:
+## Prerequisites
 
-* [Flask-Babel](https://intranet.alxswe.com/rltoken/0m4Qykp52fFH-dPzlWIdkw)
-* [Flask i18n tutorial](https://intranet.alxswe.com/rltoken/RtGz7pI7TKnYqrMMG9rWMg)
-* [pytz](https://intranet.alxswe.com/rltoken/9ocHNLN1lSTW3ioCNGCzbA)
-## Learning Objectives
+Before you begin, make sure you have the following prerequisites installed on your system:
 
-### General
+- Python 3
+- Flask
+- Flask-Babel extension
+- Babel
 
-* All your files will be interpreted/compiled on Ubuntu 18.04 LTS using python3 (version 3.7)
-* All your files should end with a new line
-* A <code>README.md</code> file, at the root of the folder of the project, is mandatory
-* Your code should use the pycodestyle style (version 2.5)
-* The first line of all your files should be exactly <code>#!/usr/bin/env python3</code>
-* All your <code>*.py</code> files should be executable
-* All your modules should have a documentation (<code>python3 -c 'print(__import__("my_module").__doc__)'</code>)
-* All your classes should have a documentation (<code>python3 -c 'print(__import__("my_module").MyClass.__doc__)'</code>)
-* All your functions and methods should have a documentation (<code>python3 -c 'print(__import__("my_module").my_function.__doc__)'</code> and <code>python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'</code>)
-* A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
-* All your functions and coroutines must be type-annotated.
-## Tasks
+You can install Flask-Babel using the following command:
 
-| Task | File |
-| ---- | ---- |
-| 0. Basic Flask app | [0-app.py](./0-app.py), [templates/0-index.html](./templates/0-index.html) |
-| 1. Basic Babel setup | [1-app.py](./1-app.py), [templates/1-index.html](./templates/1-index.html) |
-| 2. Get locale from request | [2-app.py](./2-app.py), [templates/2-index.html](./templates/2-index.html) |
-| 3. Parametrize templates | [3-app.py](./3-app.py), [babel.cfg](./babel.cfg), [templates/3-index.html](./templates/3-index.html), [translations/en/LC_MESSAGES/messages.po](./translations/en/LC_MESSAGES/messages.po), [translations/fr/LC_MESSAGES/messages.po](./translations/fr/LC_MESSAGES/messages.po), [translations/en/LC_MESSAGES/messages.mo](./translations/en/LC_MESSAGES/messages.mo), [translations/fr/LC_MESSAGES/messages.mo](./translations/fr/LC_MESSAGES/messages.mo) |
-| 4. Force locale with URL parameter | [4-app.py](./4-app.py), [templates/4-index.html](./templates/4-index.html) |
-| 5. Mock logging in | [5-app.py](./5-app.py), [templates/5-index.html](./templates/5-index.html) |
-| 6. Use user locale | [6-app.py](./6-app.py), [templates/6-index.html](./templates/6-index.html) |
-| 7. Infer appropriate time zone | [7-app.py](./7-app.py), [templates/7-index.html](./templates/7-index.html) |
-| 8. Display the current time | [app.py](./app.py), [templates/index.html](./templates/index.html), [translations/en/LC_MESSAGES/messages.po](./translations/en/LC_MESSAGES/messages.po), [translations/fr/LC_MESSAGES/messages.po](./translations/fr/LC_MESSAGES/messages.po) |
+```bash
+$ pip3 install flask_babel==2.0.0
+```
+
+## Project Structure
+
+The project is organized into different tasks, each building upon the previous one. Below, you'll find a brief overview of each task and its associated files.
+
+### Task 0: Basic Flask App
+
+In this task, you will set up a basic Flask app in `0-app.py`. The app will have a single `/` route and an `index.html` template that displays "Welcome to Holberton" as the page title and "Hello world" as the header. You can find the files in the following locations:
+
+- `0-app.py`
+- `templates/0-index.html`
+
+### Task 1: Basic Babel Setup
+
+In Task 1, you will install the Babel Flask extension and configure it for your app. You will create a `Config` class that defines available languages as `["en", "fr"]`, sets the default locale to "en," and configures the timezone to "UTC." The relevant files are:
+
+- `1-app.py`
+- `templates/1-index.html`
+
+### Task 2: Get Locale from Request
+
+Task 2 involves creating a `get_locale` function with the `babel.localeselector` decorator. This function will determine the best-matching language based on the user's request using `request.accept_languages`. The associated files are:
+
+- `2-app.py`
+- `templates/2-index.html`
+
+### Task 3: Parametrize Templates
+
+In Task 3, you will parametrize your templates using the `_` or `gettext` function. Message IDs `home_title` and `home_header` will be used. You will also set up a `babel.cfg` file and initialize translations for English and French. The files include:
+
+- `3-app.py`
+- `babel.cfg`
+- `templates/3-index.html`
+- `translations/en/LC_MESSAGES/messages.po`
+- `translations/fr/LC_MESSAGES/messages.po`
+- `translations/en/LC_MESSAGES/messages.mo`
+- `translations/fr/LC_MESSAGES/messages.mo`
+
+### Task 4: Force Locale with URL Parameter
+
+The final task, Task 4, allows you to force a specific locale by adding a `locale` parameter to your app's URLs. The `get_locale` function will detect this parameter and use it if valid. This task also includes the following file:
+
+- `4-app.py`
+- `templates/4-index.html`
+
+## Getting Started
+
+To get started, clone the GitHub repository for this project:
+
+GitHub repository: [alx-backend](https://github.com/yourusername/alx-backend)
+
+You can then follow the README instructions in each task's directory to complete the project step by step.
+
+Feel free to reach out if you have any questions or need further guidance on any of the tasks. Happy coding! [shaza.aly@gmail.com]

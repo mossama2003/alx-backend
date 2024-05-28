@@ -1,45 +1,46 @@
 #!/usr/bin/env python3
-"""
-2-app.py
-"""
+""" A script for basic flask integration"""
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_babel import Babel
-from flask import request
-
-
-class Config(object):
-    """Config class"""
-
-    LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
-
 
 app = Flask(__name__)
+babel = Babel(app)
+
+
+class Config:
+    """
+    Configuration class for the application.
+        Attributes:
+        Languages (list): List of supported languages.
+    """
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_DEFAULT_LOCALE = 'en'
 
 
 app.config.from_object(Config)
 
 
-def get_locale():
-    return request.accept_languages.best_match(app.config["LANGUAGES"])
-
-
-babel = Babel(app)
-
-
 @babel.localeselector
 def get_locale():
-    """Get locale from request"""
-    return request.accept_languages.best_match(app.config["LANGUAGES"])
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route("/")
-def hello_world() -> str:
-    """Return a simple string as our response"""
-    return render_template("2-index.html")
+def hello():
+    """This function returns the rendered template for the index.html page.
+
+    Returns:
+        The rendered template for the index.html page.
+    """
+    return render_template('1-index.html')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
